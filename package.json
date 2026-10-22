@@ -1,5 +1,5 @@
 {
-  "name": "dsh-provider-mgoole",
+  "name": "dsh-agent-roles",
   "private": true,
   "version": "0.2.1-rc.2",
   "description": "Planner / Executor / Verifier agent roles for DeepSeek Harness",

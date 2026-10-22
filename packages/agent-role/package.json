@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jimbirthday/dsh-provider-mgoole.git",
+    "url": "git+https://github.com/jimbirthday/dsh-agent-roles.git",
     "directory": "packages/agent-role"
   },
   "type": "module",
@@ -47,5 +47,5 @@
     "@deepseek-ai/cordis": "^4.0.5",
     "@deepseek-ai/dsh-tools": "^0.2.1-rc.2"
   },
-  "homepage": "https://github.com/jimbirthday/dsh-provider-mgoole#readme"
+  "homepage": "https://github.com/jimbirthday/dsh-agent-roles#readme"
 }

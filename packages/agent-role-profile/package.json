@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jimbirthday/dsh-provider-mgoole.git",
+    "url": "git+https://github.com/jimbirthday/dsh-agent-roles.git",
     "directory": "packages/agent-role-profile"
   },
   "type": "module",
@@ -58,5 +58,5 @@
     "@deepseek-ai/dsh-subagent": "^0.2.1-rc.2",
     "js-yaml": "^4.3.2"
   },
-  "homepage": "https://github.com/jimbirthday/dsh-provider-mgoole#readme"
+  "homepage": "https://github.com/jimbirthday/dsh-agent-roles#readme"
 }

@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Agent Roles",
+    "description": "Delegate to named roles that inherit your model route, with a default planner, executor, and verifier catalog."
+  }
+}

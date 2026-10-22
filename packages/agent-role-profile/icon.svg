@@ -1,0 +1,14 @@
+<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="18" cy="10.5" r="3.5" fill="url(#agent-role-head)" />
+  <path d="M11 18.5C11 15.4624 13.4624 13 16.5 13H19.5C22.5376 13 25 15.4624 25 18.5V20H11V18.5Z" fill="#658EFF" />
+  <circle cx="18" cy="18" r="2.5" fill="#F2AF63" />
+  <path d="M7 27.5L18 23L29 27.5" stroke="#45D9E7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="7" cy="27.5" r="1.75" fill="#45D9E7" />
+  <circle cx="29" cy="27.5" r="1.75" fill="#45D9E7" />
+  <defs>
+    <linearGradient id="agent-role-head" x1="15.5" y1="7" x2="20" y2="14" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7CB7FF" />
+      <stop offset="1" stop-color="#145AF3" />
+    </linearGradient>
+  </defs>
+</svg>

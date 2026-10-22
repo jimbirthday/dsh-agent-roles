@@ -1,0 +1,37 @@
+# Bilingual-pair consistency record for README.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write packages/experimental/client-ui-agent-role-config/README.md
+/:
+  en: e255cbaeafd0a940
+  zh: 3df01f9f2cceb2c5
+/deepseek-ai-dsh-experimental-client-ui-agent-role-config:
+  en: e65c6a087c808a29
+  zh: 8dc882a19e25ddbd
+/deepseek-ai-dsh-experimental-client-ui-agent-role-config/summary:
+  en: cdf07b7e39933049
+  zh: 23108173ef0c7d69
+/deepseek-ai-dsh-experimental-client-ui-agent-role-config/table-of-contents:
+  en: d152484eb41ac6b4
+  zh: 09388d293f9be9cb
+/deepseek-ai-dsh-experimental-client-ui-agent-role-config/use-this-package:
+  en: d651f7fc0069aafd
+  zh: ad944dc42fa48e35
+/deepseek-ai-dsh-experimental-client-ui-agent-role-config/understand-the-implementation:
+  en: 94ff02414fb9c76b
+  zh: 11097f0a70c990b3
+/deepseek-ai-dsh-experimental-client-ui-agent-role-config/further-exploration:
+  en: 7452223ce7a278f0
+  zh: f6b4c7ea235a6e0d
+/deepseek-ai-dsh-experimental-client-ui-agent-role-config/model-experience:
+  en: 2b1f1094f499ebcc
+  zh: 522e1be2275c9a2e
+/deepseek-ai-dsh-experimental-client-ui-agent-role-config/model-experience/kv-cache-effect:
+  en: ef55f83c2d79629c
+  zh: 74af0c7143ec55f1
+/deepseek-ai-dsh-experimental-client-ui-agent-role-config/known-limitations-and-deferred-work:
+  en: 600f438139ef89b3
+  zh: 4513ea4551b84265
+/deepseek-ai-dsh-experimental-client-ui-agent-role-config/known-limitations-and-deferred-work/dev-note:
+  en: e67f633dc6fe7773
+  zh: 3bb0c20c93f16f98

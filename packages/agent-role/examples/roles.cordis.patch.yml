@@ -1,0 +1,133 @@
+# Example Agent Role layer over a base-backed profile. Paste these rows into a
+# profile's own cordis.patch.yml, or launch this file as an overlay patch. It is
+# a patch list, applied after dsh-base, so it may override a row the base
+# declares and `insert:` the rows it adds.
+#
+# Two credential references stay unresolved here on purpose: nothing secret is
+# ever inlined, and each route resolves its `apiKeyEnv` per request through the
+# credential seam (environment over the managed credentials document).
+
+# ── model routes: the main agent and the delegated children ────────────────────
+
+# The orchestrator route the main agent runs on. `mgoole` is not a pi-ai
+# catalog provider, so the route declares its protocol, endpoint, and models
+# outright; the key resolves from MGOOLE_API_KEY.
+- id: llm-pi-ai
+  config:
+    providers:
+      mgoole:
+        displayName: Mgoole
+        apiKeyEnv: MGOOLE_API_KEY
+        api: openai-completions
+        baseURL: https://mgoole.com
+        models:
+          - id: mgoole-orchestrator
+            name: Mgoole Orchestrator
+            contextWindow: 262144
+            maxTokens: 32768
+
+      # The worker route: its own endpoint and its own credential, so a
+      # delegated child never shares the orchestrator's quota or key.
+      mgoole-worker:
+        displayName: Mgoole Worker
+        apiKeyEnv: MGOOLE_WORKER_API_KEY
+        api: openai-completions
+        baseURL: https://worker.mgoole.com
+        models:
+          - id: mgoole-worker
+            name: Mgoole Worker
+            contextWindow: 131072
+            maxTokens: 16384
+
+# ── the main agent ─────────────────────────────────────────────────────────────
+
+# The orchestrator endpoint, key, and model reach the main agent through this
+# row plus its `mgoole` route above. Role definitions below cover delegated
+# children only.
+- id: agent-default-model
+  name: '@deepseek-ai/dsh-agent-default-model'
+  config:
+    provider: mgoole
+    model: mgoole-orchestrator
+
+# ── preset registry and the two role-owned presets ────────────────────────────
+
+# The catalog's fresh roles name these presets, so the example declares them.
+# A full profile may already carry a preset registry and a different roster;
+# then keep that registry and replace the preset ids in the role table instead.
+- insert:
+    - id: agent-preset-registry
+      name: '@deepseek-ai/dsh-agent-preset-registry'
+      config:
+        default: orchestrator
+
+    - id: preset-orchestrator
+      name: '@deepseek-ai/dsh-agent-preset'
+      config:
+        id: orchestrator
+        order: 1
+        plugins:
+          - id: persona
+            name: '@deepseek-ai/dsh-persona'
+            config:
+              prefix: You plan work and delegate implementation to focused workers.
+
+    - id: preset-worker
+      name: '@deepseek-ai/dsh-agent-preset'
+      config:
+        id: worker
+        order: 2
+        plugins:
+          - id: persona
+            name: '@deepseek-ai/dsh-persona'
+            config:
+              prefix: You implement one delegated part of a task and report the result.
+
+# ── roles and the delegation tool ──────────────────────────────────────────────
+
+- insert:
+    # The declarative role catalog. Every role binds a model route. The
+    # orchestrator and worker compose independent presets; the auditor forks
+    # the parent composition and therefore cannot declare a preset.
+    - id: agent-roles
+      name: '@deepseek-ai/dsh-experimental-agent-role'
+      config:
+        # Deployment default for a role that names no backing provider.
+        backingProvider: spawn
+        roles:
+          orchestrator:
+            label: Orchestrator
+            description: Plans the work and delegates it to a worker.
+            model:
+              provider: mgoole
+              model: mgoole-orchestrator
+              reasoningEffort: high
+            agentPreset: orchestrator
+            contextDefault: fresh
+            delegationDepth: 2
+
+          auditor:
+            label: Auditor
+            description: Reviews the parent conversation and working tree using the inherited composition.
+            model:
+              provider: mgoole
+              model: mgoole-orchestrator
+            contextDefault: fork
+            delegationDepth: 1
+
+          worker:
+            label: Worker
+            description: Implements one delegated part of the task.
+            model:
+              provider: mgoole-worker
+              model: mgoole-worker
+            agentPreset: worker
+            contextDefault: fresh
+            delegationDepth: 2
+
+    # The consumer: the model-facing tool that resolves a declared role and
+    # starts its backing subagent.
+    - id: tool-agent-role
+      name: '@deepseek-ai/dsh-experimental-tool-agent-role'
+      config:
+        toolName: role_agent

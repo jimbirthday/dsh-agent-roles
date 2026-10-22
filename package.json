@@ -1,0 +1,23 @@
+{
+  "name": "dsh-provider-mgoole",
+  "private": true,
+  "version": "0.2.1-rc.2",
+  "description": "Planner / Executor / Verifier agent roles for DeepSeek Harness",
+  "type": "module",
+  "packageManager": "pnpm@11.28.5",
+  "engines": {
+    "node": "^22.19 || >=24"
+  },
+  "scripts": {
+    "build": "tsc -b packages/agent-role packages/tool-agent-role packages/agent-role-profile",
+    "build:client": "pnpm --filter @deepseek-ai/dsh-experimental-client-ui-agent-role-config run bundle",
+    "pack:plugins": "pnpm -r --filter './packages/*' pack --pack-destination dist"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "react": "^18.3.1",
+    "tsdown": "^0.16.8",
+    "typescript": "^5.9.3"
+  }
+}

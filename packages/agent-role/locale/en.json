@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Agent Roles",
+    "description": "Declare named agent roles binding a model route, agent preset, and delegation defaults."
+  }
+}

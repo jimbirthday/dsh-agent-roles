@@ -1,0 +1,79 @@
+# Bilingual-pair consistency record for README.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write packages/experimental/agent-role/README.md
+/:
+  en: 38ec1f1ae0ae303c
+  zh: 064b6a44204b5b22
+/deepseek-ai-dsh-experimental-agent-role:
+  en: 380fac58662fc89a
+  zh: 75ae3e49205749bb
+/deepseek-ai-dsh-experimental-agent-role/summary:
+  en: 26f820891f908a41
+  zh: e3d8608dd8b69cf2
+/deepseek-ai-dsh-experimental-agent-role/table-of-contents:
+  en: d152484eb41ac6b4
+  zh: 09388d293f9be9cb
+/deepseek-ai-dsh-experimental-agent-role/use-this-package:
+  en: 89f119c206b124a7
+  zh: 5273210713a74fec
+/deepseek-ai-dsh-experimental-agent-role/use-this-package/when-to-choose-it:
+  en: 4070838ecb504dad
+  zh: 7edfb74edb0e699d
+/deepseek-ai-dsh-experimental-agent-role/use-this-package/smallest-working-setup:
+  en: 21f1826be4997e39
+  zh: ffc46a770bbfcde5
+/deepseek-ai-dsh-experimental-agent-role/use-this-package/the-role-table:
+  en: ce6f027f6d3a58ba
+  zh: 6b494d6ec6ca30f5
+/deepseek-ai-dsh-experimental-agent-role/use-this-package/reading-roles:
+  en: 073eb61f9a56c7f0
+  zh: 886ee9386227d34f
+/deepseek-ai-dsh-experimental-agent-role/use-this-package/validation-and-failure:
+  en: 1c8b107536957781
+  zh: a67a02dbc1742d77
+/deepseek-ai-dsh-experimental-agent-role/understand-the-implementation:
+  en: 5ed7c8861fbd299a
+  zh: f1df7d2f02e0de48
+/deepseek-ai-dsh-experimental-agent-role/understand-the-implementation/design-concept:
+  en: 5f13abf020f37124
+  zh: 1d0a42b17d34ce0a
+/deepseek-ai-dsh-experimental-agent-role/understand-the-implementation/source-map:
+  en: b4189a5965d5c973
+  zh: 6b0611774aab05c1
+/deepseek-ai-dsh-experimental-agent-role/understand-the-implementation/how-a-consumer-spends-a-role:
+  en: 075ddabc7baa50ce
+  zh: d756d1c3ad7e0a28
+/deepseek-ai-dsh-experimental-agent-role/understand-the-implementation/why-the-catalog-is-experimental:
+  en: d331bc9c259ff5eb
+  zh: de1c52f9345d2301
+/deepseek-ai-dsh-experimental-agent-role/further-exploration:
+  en: 489376c6ca581273
+  zh: 1c0e8eea7c054452
+/deepseek-ai-dsh-experimental-agent-role/model-experience:
+  en: 215e7ba838619b7b
+  zh: a311da3843709f90
+/deepseek-ai-dsh-experimental-agent-role/model-experience/role-bindings-indirectly:
+  en: f8fc8b18faaaea6e
+  zh: b89cde493c178080
+/deepseek-ai-dsh-experimental-agent-role/model-experience/role-bindings-indirectly/what-the-model-sees:
+  en: 391ffd28fd6d8bd0
+  zh: 8902e72f88669371
+/deepseek-ai-dsh-experimental-agent-role/model-experience/role-bindings-indirectly/token-effect:
+  en: 79ac3098e3b7ead3
+  zh: 838447176028250f
+/deepseek-ai-dsh-experimental-agent-role/model-experience/role-bindings-indirectly/kv-cache-effect:
+  en: c048251ab03985f7
+  zh: 84be57d3ee5399d7
+/deepseek-ai-dsh-experimental-agent-role/known-limitations-and-deferred-work:
+  en: 559bb573e54f1b3f
+  zh: 7c34c8408cb17ea0
+/deepseek-ai-dsh-experimental-agent-role/known-limitations-and-deferred-work/dev-note:
+  en: 498e4cf9fe5741a7
+  zh: 9d2bab630e655c99
+/deepseek-ai-dsh-experimental-agent-role/known-limitations-and-deferred-work/dev-note/promotion:
+  en: 3d126e3b1015e4ce
+  zh: 22f0d18e2ce5c30f
+/deepseek-ai-dsh-experimental-agent-role/known-limitations-and-deferred-work/dev-note/future-directions:
+  en: 40846a6739597308
+  zh: 9f4d72cca1b905c7

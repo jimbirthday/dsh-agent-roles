@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "智能体角色",
+    "description": "按名称委派给继承当前模型路由的角色，并附带默认的 planner、executor 与 verifier 目录。"
+  }
+}

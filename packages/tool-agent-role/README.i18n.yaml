@@ -1,0 +1,91 @@
+# Bilingual-pair consistency record for README.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write packages/experimental/tool-agent-role/README.md
+/:
+  en: 7e5dd211e28fb5bb
+  zh: 430da0087263feff
+/deepseek-ai-dsh-experimental-tool-agent-role:
+  en: 6bade8d2bd3eb1b9
+  zh: 3d4958a15915a9c9
+/deepseek-ai-dsh-experimental-tool-agent-role/summary:
+  en: 537c7e8ca52cc010
+  zh: 6c956a50719e31ba
+/deepseek-ai-dsh-experimental-tool-agent-role/table-of-contents:
+  en: d152484eb41ac6b4
+  zh: 09388d293f9be9cb
+/deepseek-ai-dsh-experimental-tool-agent-role/use-this-package:
+  en: 8b900e19df1dcbcf
+  zh: dc8e567659508fe9
+/deepseek-ai-dsh-experimental-tool-agent-role/use-this-package/when-to-choose-it:
+  en: ff860e49ed61684b
+  zh: 5698486c74ef515a
+/deepseek-ai-dsh-experimental-tool-agent-role/use-this-package/smallest-working-example:
+  en: 91a2660eca560e68
+  zh: c795f7a149b2c532
+/deepseek-ai-dsh-experimental-tool-agent-role/use-this-package/what-the-model-can-do:
+  en: 627cf97a628b9965
+  zh: d19fb20be9fa592a
+/deepseek-ai-dsh-experimental-tool-agent-role/use-this-package/what-success-and-failure-look-like:
+  en: 0a8c0a1226e3e7cd
+  zh: 0d51c1b7c95d62d6
+/deepseek-ai-dsh-experimental-tool-agent-role/understand-the-implementation:
+  en: 8d94a7381bca3fa9
+  zh: fef971e1c9741384
+/deepseek-ai-dsh-experimental-tool-agent-role/understand-the-implementation/design-philosophy:
+  en: 1e1282ce312f446b
+  zh: c0125cde35e566d0
+/deepseek-ai-dsh-experimental-tool-agent-role/understand-the-implementation/source-map:
+  en: 4ad4e1552e84c681
+  zh: 29a2b1279ebefab4
+/deepseek-ai-dsh-experimental-tool-agent-role/understand-the-implementation/role-resolution-and-provider-preflight:
+  en: 2f7c2ec26ea4335b
+  zh: cd3ee54ec4dbba68
+/deepseek-ai-dsh-experimental-tool-agent-role/understand-the-implementation/fresh-and-fork-context:
+  en: 65d8ba24c54a2507
+  zh: 97228bb31efb60f5
+/deepseek-ai-dsh-experimental-tool-agent-role/understand-the-implementation/registration-and-teardown:
+  en: 165ab47a4fbe64a9
+  zh: 0153efb6366a8550
+/deepseek-ai-dsh-experimental-tool-agent-role/further-exploration:
+  en: 0b91b5e085ca9c3c
+  zh: b2889c27e856ca15
+/deepseek-ai-dsh-experimental-tool-agent-role/model-experience:
+  en: 215e7ba838619b7b
+  zh: a311da3843709f90
+/deepseek-ai-dsh-experimental-tool-agent-role/model-experience/role-delegation-tool:
+  en: 4f8659d9091a7d34
+  zh: 835e40eb5b26945c
+/deepseek-ai-dsh-experimental-tool-agent-role/model-experience/role-delegation-tool/what-the-model-sees:
+  en: 2f8b21d7ccde00f6
+  zh: 8a6434195e425b61
+/deepseek-ai-dsh-experimental-tool-agent-role/model-experience/role-delegation-tool/token-effect:
+  en: 7b215274f707aed7
+  zh: 62ce9f011a40dd31
+/deepseek-ai-dsh-experimental-tool-agent-role/model-experience/role-delegation-tool/kv-cache-effect:
+  en: ed4cadec0d44913e
+  zh: 2d1408995cbcb67e
+/deepseek-ai-dsh-experimental-tool-agent-role/model-experience/delegation-result:
+  en: 4c1551bf375c6ff1
+  zh: 78c5c96ce3337f7e
+/deepseek-ai-dsh-experimental-tool-agent-role/model-experience/delegation-result/what-the-model-sees:
+  en: ee03f52787ee8434
+  zh: a55cfbeca083093c
+/deepseek-ai-dsh-experimental-tool-agent-role/model-experience/delegation-result/token-effect:
+  en: 90c1e263eb8846e5
+  zh: 8e60818b21d85dce
+/deepseek-ai-dsh-experimental-tool-agent-role/model-experience/delegation-result/kv-cache-effect:
+  en: 607ad15f60d3bf54
+  zh: 65b7462fc0292cc2
+/deepseek-ai-dsh-experimental-tool-agent-role/known-limitations-and-deferred-work:
+  en: e9c485183a5c26bc
+  zh: 33a21bc635a350e1
+/deepseek-ai-dsh-experimental-tool-agent-role/known-limitations-and-deferred-work/dev-note:
+  en: b5ebcb927b7959b5
+  zh: 20254a53a789cb1a
+/deepseek-ai-dsh-experimental-tool-agent-role/known-limitations-and-deferred-work/dev-note/promotion:
+  en: 3d126e3b1015e4ce
+  zh: 51cac18ef120c921
+/deepseek-ai-dsh-experimental-tool-agent-role/known-limitations-and-deferred-work/dev-note/future-directions:
+  en: f2ff9745c45c28a8
+  zh: 8597afe2bd20e6a8

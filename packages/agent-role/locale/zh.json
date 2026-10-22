@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "智能体角色",
+    "description": "声明具名智能体角色，绑定模型路由、agent preset 与委派默认值。"
+  }
+}

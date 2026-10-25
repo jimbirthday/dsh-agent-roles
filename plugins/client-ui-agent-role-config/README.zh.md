@@ -25,7 +25,7 @@ kind: "package-reference"
 <a id="use-this-package"></a>
 ## 使用本包
 
-安装并启用 [`@deepseek-ai/dsh-experimental-agent-role-profile`](../agent-role-profile/README.zh.md)。本包是该组合包的依赖，无需单独安装。在插件页打开 Agent Roles 组合包即可进入编辑器。页面展示继承的角色、上下文模式，以及可选的模型、preset、子智能体、预算和输出 Schema 字段。Provider 和模型从 Host 模型目录中选择，模型列表会跟随所选 Provider。推理力度只能从该模型在该路由上提供的级别中选择，因此无法输入模型会拒绝的值；不提供任何级别的模型会禁用选择框，切换到不提供已存级别的模型会清除该级别。
+安装并启用 [`@jimbirthday/dsh-agent-roles`](../agent-role-profile/README.zh.md)。本包是该组合包的依赖，无需单独安装。在插件页打开 Agent Roles 组合包即可进入编辑器。页面展示继承的角色、上下文模式，以及可选的模型、preset、子智能体、预算和输出 Schema 字段。Provider 和模型从 Host 模型目录中选择，模型列表会跟随所选 Provider。推理力度只能从该模型在该路由上提供的级别中选择，因此无法输入模型会拒绝的值；不提供任何级别的模型会禁用选择框，切换到不提供已存级别的模型会清除该级别。
 
 每次编辑都会暂存，直到点击保存。保存会校验每一行，并在一次带 revision 约束的设置变更中写入完整 `roles` 字典以及发生变化的回退 provider。Host 拒绝时保留暂存值并显示保存失败，便于用户修正。放弃会恢复已接受的目录。对默认 backing provider 点击重置会暂存一次移除用户层覆盖的操作，而不是写入继承文本。
 
@@ -41,7 +41,7 @@ kind: "package-reference"
 <details>
 <summary>实现细节——点击展开</summary>
 
-Host 入口为空。它的 Loader 行存在，是为了让 Client 模块系统提供浏览器半边。该半边注册 `agentRoles.config` 字典和一个名为 `@deepseek-ai/dsh-experimental-agent-role-profile` 的 keyed `plugins.bundle.config` 条目；`ctx.configForms.whileServed(['agent-roles'])` 控制该条目及其控制器是否存在。控制器绑定 `ctx.configForms.get('agent-roles')`，并为每个已接受设置值缓存一份草稿目录，使行在不同渲染与编辑之间保持稳定的草稿 ID。
+Host 入口为空。它的 Loader 行存在，是为了让 Client 模块系统提供浏览器半边。该半边注册 `agentRoles.config` 字典和一个名为 `@jimbirthday/dsh-agent-roles` 的 keyed `plugins.bundle.config` 条目；`ctx.configForms.whileServed(['agent-roles'])` 控制该条目及其控制器是否存在。控制器绑定 `ctx.configForms.get('agent-roles')`，并为每个已接受设置值缓存一份草稿目录，使行在不同渲染与编辑之间保持稳定的草稿 ID。
 
 设置 Loader 整体替换该行的 `config`，而不是深合并，因此页面写入完整角色字典，而不是逐角色 patch。保存前会按 Host 目录规则校验。草稿行以进程内 ID 为键；已保存目录以去除首尾空白后的角色名为键。`SettingsForm` 渲染暂存表单、字段、保存失败、只读和不可用状态。
 

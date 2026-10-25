@@ -49,7 +49,7 @@ dsh --dump-config | grep -A2 'id: agent-roles'
 ### 卸载
 
 ```sh
-dsh plugin remove @deepseek-ai/dsh-experimental-agent-role-profile
+dsh plugin remove @jimbirthday/dsh-agent-roles
 ```
 
 ## 使用

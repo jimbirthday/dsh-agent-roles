@@ -745,7 +745,7 @@ window.__ModuleLoader__.load({
 		/** Settings namespace registered by the `agent-roles` Loader row. */
 		const AGENT_ROLES_NS = "agent-roles";
 		/** Settings namespace registered by the `agent-roles` Loader row in the shipped bundle patch. */
-		const AGENT_ROLE_CONFIG_BUNDLE = "@deepseek-ai/dsh-experimental-agent-role-profile";
+		const AGENT_ROLE_CONFIG_BUNDLE = "@jimbirthday/dsh-agent-roles";
 		/** Maximum code points in one role name, mirroring the catalog validator. */
 		const ROLE_NAME_MAX_LENGTH = 256;
 		/** Maximum code points in one role label, mirroring the catalog validator. */

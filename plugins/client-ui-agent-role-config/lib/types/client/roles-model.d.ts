@@ -13,7 +13,7 @@ import type { AgentRoleConfigLocaleKey } from './locales.ts';
 /** Settings namespace registered by the `agent-roles` Loader row. */
 export declare const AGENT_ROLES_NS = "agent-roles";
 /** Settings namespace registered by the `agent-roles` Loader row in the shipped bundle patch. */
-export declare const AGENT_ROLE_CONFIG_BUNDLE = "@deepseek-ai/dsh-experimental-agent-role-profile";
+export declare const AGENT_ROLE_CONFIG_BUNDLE = "@jimbirthday/dsh-agent-roles";
 /** The two context modes a role may declare. */
 export type RoleContext = 'fresh' | 'fork';
 /** One role row as the page edits it. Every optional field is present as a draft string. */

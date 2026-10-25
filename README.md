@@ -21,56 +21,36 @@
 
 ### 步骤
 
-四个包**没有发布到 npm**，用本仓库 `artifacts/` 里的 tarball 安装。先把仓库 clone 下来：
+本仓库根目录就是一个自包含的 dsh bundle（三个插件随包分发，不依赖未发布的 npm 包）。在 dsh 的 Plugins 页面选择「从 Git 安装」并填入仓库地址，或在命令行执行：
 
 ```sh
-git clone https://github.com/jimbirthday/dsh-agent-roles.git
-cd dsh-agent-roles
-shasum -a 256 -c artifacts/SHA256SUMS      # 核对四个 tarball
+dsh plugin add github:jimbirthday/dsh-agent-roles
 ```
 
-然后在 dsh profile 里加 overrides，让 pnpm 知道去哪找那三个内部依赖：
-
-```yaml
-# ~/.dsh/profiles/web/pnpm-workspace.yaml
-overrides:
-  '@deepseek-ai/dsh-experimental-agent-role': file:/绝对路径/dsh-agent-roles/artifacts/deepseek-ai-dsh-experimental-agent-role-0.2.1-rc.2.tgz
-  '@deepseek-ai/dsh-experimental-tool-agent-role': file:/绝对路径/dsh-agent-roles/artifacts/deepseek-ai-dsh-experimental-tool-agent-role-0.2.1-rc.2.tgz
-  '@deepseek-ai/dsh-experimental-client-ui-agent-role-config': file:/绝对路径/dsh-agent-roles/artifacts/deepseek-ai-dsh-experimental-client-ui-agent-role-config-0.2.1-rc.2.tgz
-```
-
-再安装 bundle 本身：
-
-```sh
-dsh plugin --profile web add /绝对路径/dsh-agent-roles/artifacts/deepseek-ai-dsh-experimental-agent-role-profile-0.2.1-rc.2.tgz
-```
-
-> 路径必须是绝对路径，`~` 不会被展开。漏掉 overrides 那一步会报 `is not in the npm registry`，因为三个内部包不在 npm 上。
+> 需要装到指定 profile 时加 `--profile <name>`，例如 `dsh plugin --profile web add github:jimbirthday/dsh-agent-roles`。
 
 ### 确认装好了
 
 ```sh
-dsh --profile web --dump-config | grep -A2 'id: agent-roles'
+dsh --dump-config | grep -A2 'id: agent-roles'
 ```
 
-正常会看到三个条目：
+正常会看到三个条目（`name` 是随包分发的文件路径插件）：
 
 ```text
 - id: agent-roles
-  name: '@deepseek-ai/dsh-experimental-agent-role'
+  name: 'file://…/plugins/agent-role/lib/index.js'
 - id: ui-agent-role-config
-  name: '@deepseek-ai/dsh-experimental-client-ui-agent-role-config'
+  name: 'file://…/plugins/client-ui-agent-role-config/lib/index.js'
 - id: tool-agent-role
-  name: '@deepseek-ai/dsh-experimental-tool-agent-role'
+  name: 'file://…/plugins/tool-agent-role/lib/index.js'
 ```
 
 ### 卸载
 
 ```sh
-dsh plugin --profile web remove @deepseek-ai/dsh-experimental-agent-role-profile
+dsh plugin remove @deepseek-ai/dsh-experimental-agent-role-profile
 ```
-
-装之前记得把加过的 overrides 也删掉。
 
 ## 使用
 
@@ -112,13 +92,15 @@ dsh plugin --profile web remove @deepseek-ai/dsh-experimental-agent-role-profile
         contextDefault: fresh
 ```
 
+> 在配置里直接引用角色目录插件时，`name` 仍写官方包名 `@deepseek-ai/dsh-experimental-agent-role`（本 bundle 会以文件路径形式加载它，包名不变）。
+
 每个角色可声明的字段：`label`、`description`、`tags`、`model`、`agentPreset`、`backingProvider`、`contextDefault`、`delegationDepth`、`capacityGroup`、`executionBudget`、`outputSchema`。
 
 `role_agent` 工具本身也有配置项：`toolName`（默认 `role_agent`）、`discoveryToolName`（默认 `list_agent_roles`）、`maxDepth`、`maxRoles`（默认 64）、`discoveryPageSize`（默认 50）等。
 
 ## 兼容性
 
-**最重要的一条：本仓库的三个 Host 包依赖 `@deepseek-ai/dsh-subagent` 里尚未发布到 npm 的成员。**
+**最重要的一条：三个 Host 包依赖 `@deepseek-ai/dsh-subagent` 里尚未发布到 npm 的成员。**
 
 具体是这些：
 
@@ -135,31 +117,18 @@ npm 上公开的 `@deepseek-ai/dsh-subagent@0.2.1-rc.2` 没有这些。实测结
 | `executionBudget`（执行预算） | ⚠️ 不生效，字段被忽略 |
 | `capacityGroup`（容量组） | ⚠️ 不生效，字段被忽略 |
 | 子代理完成通知里的角色名 | ⚠️ 显示任务标签，不是角色名 |
-| `pnpm run build`（三个 Host 包） | ❌ 报三个类型错误 |
-| `pnpm run build:client`（客户端） | ✅ 0 错误 |
 
 也就是说：**核心用法完全可用，但执行预算和容量组这两个高级配置不起作用。** 要彻底解决，需要先把这几个字段发布到 npm 的 `dsh-subagent`，或者把插件改成不依赖它们。
-
-## 从源码构建
-
-```sh
-pnpm install
-pnpm run build          # 三个 Host 包（见上方兼容性限制）
-pnpm run build:client   # 客户端 bundle，干净通过
-pnpm run pack:plugins   # 输出 tarball 到 dist/
-```
-
-要完整构建 Host 包，需要工作区里能解析到含上述成员的 `dsh-subagent`（即 deepseek-harness 源码仓库里对应的提交）。
 
 ## 仓库结构
 
 ```text
-packages/
-  agent-role/                     声明式角色目录：定义、校验、解析
-  tool-agent-role/                role_agent 委派工具 + list_agent_roles 发现工具
-  client-ui-agent-role-config/    Web 设置页的角色编辑卡片
-  agent-role-profile/             上面三个的 bundle 组合层，声明三个默认角色
-artifacts/                        预构建 tarball + SHA256SUMS
+cordis.patch.yml                   bundle 的 patch：声明三个默认角色 + 三个插件行
+lib/                               根 bundle 的运行时（空导出）
+plugins/agent-role/                声明式角色目录：定义、校验、解析
+plugins/tool-agent-role/           role_agent 委派工具 + list_agent_roles 发现工具
+plugins/client-ui-agent-role-config/ Web 设置页的角色编辑卡片
+artifacts/                         旧版四包 tarball（保留作参考）
 ```
 
 ## 来源与许可
